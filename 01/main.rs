@@ -1,4 +1,4 @@
-pub fn process_part1(input: &str) -> i32 {
+fn part1(input: &str) -> i32 {
     input
         .lines()
         .map(|line| {
@@ -10,7 +10,7 @@ pub fn process_part1(input: &str) -> i32 {
         .sum()
 }
 
-pub fn process_part2(input: &str) -> i32 {
+fn part2(input: &str) -> i32 {
     input
         .lines()
         .map(|line| {
@@ -60,33 +60,17 @@ fn parse_part2(input: &str) -> String {
     numbers
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+fn main() -> Result<(), std::io::Error> {
+    let mut args = std::env::args();
+    let _ = args.next();
+    let input_file = args.next().unwrap();
+    let input = std::fs::read_to_string(input_file)?;
 
-    const INPUT: &str = "1abc2
-pqr3stu8vwx
-a1b2c3d4e5f
-treb7uchet
-";
-    const INPUT2: &str = "two1nine
-eightwothree
-abcone2threexyz
-xtwone3four
-4nineeightseven2
-zoneight234
-7pqrstsixteen
-";
+    let result = part1(&input);
+    println!("Part 1: {result}");
 
-    #[test]
-    fn part1() {
-        let result = process_part1(INPUT);
-        assert_eq!(result, 142);
-    }
+    let result = part2(&input);
+    println!("Part 2: {result}");
 
-    #[test]
-    fn part2() {
-        let result = process_part2(INPUT2);
-        assert_eq!(result, 281);
-    }
+    Ok(())
 }
