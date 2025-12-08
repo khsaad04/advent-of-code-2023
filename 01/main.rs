@@ -1,23 +1,23 @@
-fn part1(input: &str) -> i32 {
+fn part1(input: &str) -> usize {
     input
         .lines()
         .map(|line| {
             let v: Vec<_> = line.chars().filter(|chr| chr.is_numeric()).collect();
             format!("{}{}", v.first().unwrap(), v.last().unwrap())
-                .parse::<i32>()
+                .parse::<usize>()
                 .unwrap()
         })
         .sum()
 }
 
-fn part2(input: &str) -> i32 {
+fn part2(input: &str) -> usize {
     input
         .lines()
         .map(|line| {
             let line = parse_part2(line);
             let v: Vec<_> = line.chars().filter(|chr| chr.is_numeric()).collect();
             format!("{}{}", v.first().unwrap(), v.last().unwrap())
-                .parse::<i32>()
+                .parse::<usize>()
                 .unwrap()
         })
         .sum()

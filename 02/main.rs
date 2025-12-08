@@ -1,14 +1,14 @@
-fn part1(input: &str) -> i32 {
+fn part1(input: &str) -> usize {
     input
         .lines()
         .map(|line| {
             let (id, game) = line.split_once(": ").unwrap();
-            let mut val: i32 = id[5..].parse().unwrap();
+            let mut val: usize = id[5..].parse().unwrap();
             let game = game.replace(';', ",");
             let cubes: Vec<&str> = game.split(", ").collect();
             for cube in cubes {
                 let (amount, color) = cube.split_once(' ').unwrap();
-                let amount: i32 = amount.parse().unwrap();
+                let amount: usize = amount.parse().unwrap();
                 match color {
                     "red" => {
                         if amount > 12 {
@@ -33,7 +33,7 @@ fn part1(input: &str) -> i32 {
         .sum()
 }
 
-fn part2(input: &str) -> i32 {
+fn part2(input: &str) -> usize {
     input
         .lines()
         .map(|line| {
@@ -44,7 +44,7 @@ fn part2(input: &str) -> i32 {
             for set in sets.split("; ") {
                 for pair in set.split(", ") {
                     let (num, color) = pair.split_once(' ').unwrap();
-                    let num: i32 = num.parse().unwrap();
+                    let num: usize = num.parse().unwrap();
                     match color {
                         "red" => red = red.max(num),
                         "green" => green = green.max(num),
