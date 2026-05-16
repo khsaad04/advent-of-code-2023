@@ -60,17 +60,15 @@ fn parse_part2(input: &str) -> String {
     numbers
 }
 
-fn main() -> Result<(), std::io::Error> {
+fn main() {
     let mut args = std::env::args();
     let _ = args.next();
     let input_file = args.next().unwrap();
-    let input = std::fs::read_to_string(input_file)?;
+    let input = std::fs::read_to_string(input_file).unwrap();
 
     let result = part1(&input);
     println!("Part 1: {result}");
 
     let result = part2(&input);
     println!("Part 2: {result}");
-
-    Ok(())
 }
